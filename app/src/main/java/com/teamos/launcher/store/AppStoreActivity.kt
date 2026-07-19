@@ -32,8 +32,9 @@ class AppStoreActivity : AppCompatActivity() {
         adapter = StoreAdapter(
             all, prefs,
             onOpen = { Navigator.open(this, it) },
-            onChanged = {
-                Toast.makeText(this, Strings.get(this, "store.installed"), Toast.LENGTH_SHORT).show()
+            onChanged = { installed ->
+                val key = if (installed) "store.installed" else "store.uninstall"
+                Toast.makeText(this, Strings.get(this, key), Toast.LENGTH_SHORT).show()
             }
         )
         b.list.layoutManager = LinearLayoutManager(this)

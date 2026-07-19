@@ -12,7 +12,7 @@ class StoreAdapter(
     private var items: List<AppEntry>,
     private val prefs: Prefs,
     private val onOpen: (AppEntry) -> Unit,
-    private val onChanged: () -> Unit
+    private val onChanged: (installed: Boolean) -> Unit
 ) : RecyclerView.Adapter<StoreAdapter.VH>() {
 
     class VH(val b: ItemStoreBinding) : RecyclerView.ViewHolder(b.root)
@@ -43,7 +43,7 @@ class StoreAdapter(
                 else -> {
                     prefs.install(app.id)
                     notifyItemChanged(position)
-                    onChanged()
+                    onChanged(true)
                 }
             }
         }
@@ -54,7 +54,7 @@ class StoreAdapter(
             if (!app.system && prefs.isInstalled(app.id)) {
                 prefs.uninstall(app.id)
                 notifyItemChanged(position)
-                onChanged()
+                onChanged(false)
             }
             true
         }
