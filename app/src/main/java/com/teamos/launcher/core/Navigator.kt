@@ -10,7 +10,6 @@ import com.teamos.launcher.apps.WellbeingActivity
 import com.teamos.launcher.data.AppEntry
 import com.teamos.launcher.settings.SettingsActivity
 import com.teamos.launcher.store.AppStoreActivity
-import com.teamos.launcher.teamai.TeamAiActivity
 import com.teamos.launcher.web.BrowserActivity
 import com.teamos.launcher.web.WebAppActivity
 
@@ -26,7 +25,6 @@ object Navigator {
             "store" -> Intent(context, AppStoreActivity::class.java)
             "settings" -> Intent(context, SettingsActivity::class.java)
             "browser" -> Intent(context, BrowserActivity::class.java)
-            "team-ai" -> Intent(context, TeamAiActivity::class.java)
             "notes" -> Intent(context, NotesActivity::class.java)
             "gallery" -> Intent(context, GalleryActivity::class.java)
             "wellbeing" -> Intent(context, WellbeingActivity::class.java)

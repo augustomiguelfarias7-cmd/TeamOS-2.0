@@ -99,7 +99,6 @@ object IconLoader {
         "browser" -> R.drawable.ic_app_browser
         "notes" -> R.drawable.ic_app_notes
         "digital-wellbeing", "wellbeing" -> R.drawable.ic_app_wellbeing
-        "team-ai", "teamai" -> R.drawable.ic_app_teamai
         "sos" -> R.drawable.ic_app_sos
         "phone", "sim" -> R.drawable.ic_app_phone
         else -> 0

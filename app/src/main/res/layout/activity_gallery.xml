@@ -1,45 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    android:paddingHorizontal="16dp"
+    android:paddingBottom="24dp">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:text="Galeria"
+        android:textColor="@color/white"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/subtitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingHorizontal="16dp"
-        android:paddingBottom="24dp">
+        android:layout_marginTop="6dp"
+        android:text="Suas fotos e vídeos."
+        android:textColor="@color/white_60"
+        android:textSize="14sp" />
 
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
-            android:text="Galeria"
-            android:textColor="@color/white"
-            android:textSize="28sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/subtitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:text="Fotos e vídeos, com edição integrada da Team AI."
-            android:textColor="@color/white_60"
-            android:textSize="14sp" />
-
-        <LinearLayout android:id="@+id/rowAiEditor" style="@style/SettingsRow" android:layout_marginTop="16dp">
-            <TextView android:id="@+id/rowAiEditorTitle" style="@style/SettingsRowTitle" android:text="Editor Team AI" />
-            <TextView android:id="@+id/rowAiEditorValue" style="@style/SettingsRowValue"
-                android:text="Gerar imagens, desenhar no touch e adicionar objetos." />
-        </LinearLayout>
-
-        <LinearLayout android:id="@+id/rowEnhance" style="@style/SettingsRow">
-            <TextView android:id="@+id/rowEnhanceTitle" style="@style/SettingsRowTitle" android:text="Melhorar vídeo" />
-            <TextView android:id="@+id/rowEnhanceValue" style="@style/SettingsRowValue"
-                android:text="Upscale quadro a quadro (chega na Fase 4)." />
-        </LinearLayout>
-    </LinearLayout>
-</ScrollView>
+    <TextView
+        android:id="@+id/empty"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="Nenhuma foto ainda."
+        android:textColor="@color/white_60"
+        android:textSize="15sp" />
+</LinearLayout>

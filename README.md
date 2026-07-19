@@ -7,11 +7,11 @@
 ## Visão
 
 - **Loja de Apps** com 200+ web apps (Google, OpenAI, Microsoft, GitHub, Replit, Lovable, e muito mais).
-- **Team AI** — pacote de IA do sistema: edição de imagem, melhoria de qualidade de vídeo (upscale quadro a quadro), desenho sobre imagens no touch e legendas ao vivo (tradução local).
-- **Assistente padrão** chamado ao segurar o botão de energia — ChatGPT (padrão) ou Google Gemini, alternável.
+- **IA do sistema** — o recurso de inteligência artificial é o **assistente padrão** (ChatGPT, com Google Gemini como alternativa), acessível pelo dock e projetado para o gesto de segurar o botão de energia.
+- **Assistente padrão** — ChatGPT (padrão) ou Google Gemini, alternável nas Configurações.
 - **Navegador** próprio com busca padrão Google e IA (ChatGPT) na barra lateral.
 - **Setup inicial** multilíngue (sem login): pt-BR (padrão), pt-PT, en-US, en-GB, coreano, japonês e hindi.
-- Apps pré-instalados: Galeria, Configurações, Bem-estar Digital, Team AI, ChatGPT, Navegador, Bloco de Notas, Loja de Apps.
+- Apps pré-instalados: Galeria, Configurações, Bem-estar Digital, ChatGPT, Navegador, Bloco de Notas, Loja de Apps.
 
 ## Estrutura do repositório
 

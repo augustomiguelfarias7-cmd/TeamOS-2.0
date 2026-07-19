@@ -38,7 +38,6 @@ class SettingsActivity : AppCompatActivity() {
         b.rowSearch.setOnClickListener { pickSearch() }
         b.rowLock.setOnClickListener { configureLock() }
         b.rowSos.setOnClickListener { startActivity(Intent(this, SosActivity::class.java)) }
-        b.rowTeamAi.setOnClickListener { Navigator.openRoute(this, "teamos://team-ai") }
         b.rowWellbeing.setOnClickListener { Navigator.openRoute(this, "teamos://wellbeing") }
     }
 
@@ -53,7 +52,6 @@ class SettingsActivity : AppCompatActivity() {
         b.secPersonal.text = Strings.get(this, "settings.sec.personal")
         b.secAssistant.text = Strings.get(this, "settings.sec.assistant")
         b.secSecurity.text = Strings.get(this, "settings.sec.security")
-        b.secAi.text = Strings.get(this, "settings.sec.ai")
 
         b.rowWifiTitle.text = Strings.get(this, "settings.wifi")
         b.rowSimTitle.text = Strings.get(this, "sim.title")
@@ -63,7 +61,6 @@ class SettingsActivity : AppCompatActivity() {
         b.rowSearchTitle.text = Strings.get(this, "settings.search_engine")
         b.rowLockTitle.text = Strings.get(this, "settings.lock")
         b.rowSosTitle.text = Strings.get(this, "sos.title")
-        b.rowTeamAiTitle.text = Strings.get(this, "teamai.title")
         b.rowWellbeingTitle.text = Strings.get(this, "settings.wellbeing")
 
         b.rowWallpaperValue.text = Strings.get(

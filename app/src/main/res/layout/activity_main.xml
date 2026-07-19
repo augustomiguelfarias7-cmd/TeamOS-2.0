@@ -92,7 +92,7 @@
             </LinearLayout>
 
             <LinearLayout android:id="@+id/dockAssistant" style="@style/DockItem">
-                <ImageView style="@style/DockIcon" android:background="@null" android:scaleType="fitCenter" android:contentDescription="@null" android:src="@drawable/ic_app_teamai" />
+                <ImageView style="@style/DockIcon" android:background="@null" android:scaleType="fitCenter" android:contentDescription="@null" android:src="@drawable/ic_app_assistant" />
             </LinearLayout>
 
             <LinearLayout android:id="@+id/dockSettings" style="@style/DockItem">

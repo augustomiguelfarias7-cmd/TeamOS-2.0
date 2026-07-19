@@ -46,6 +46,11 @@
             <TextView android:id="@+id/rowLanguageValue" style="@style/SettingsRowValue" android:text="Português (Brasil)" />
         </LinearLayout>
 
+        <LinearLayout android:id="@+id/rowWellbeing" style="@style/SettingsRow">
+            <TextView android:id="@+id/rowWellbeingTitle" style="@style/SettingsRowTitle" android:text="Bem-estar digital" />
+            <TextView style="@style/SettingsRowValue" android:text="Tempo de uso" />
+        </LinearLayout>
+
         <TextView android:id="@+id/secAssistant" style="@style/SettingsSection" android:text="Assistente e busca" />
 
         <LinearLayout android:id="@+id/rowAssistant" style="@style/SettingsRow">
@@ -68,18 +73,6 @@
         <LinearLayout android:id="@+id/rowSos" style="@style/SettingsRow">
             <TextView android:id="@+id/rowSosTitle" style="@style/SettingsRowTitle" android:text="SOS" />
             <TextView style="@style/SettingsRowValue" android:text="Mensagem de emergência" />
-        </LinearLayout>
-
-        <TextView android:id="@+id/secAi" style="@style/SettingsSection" android:text="Inteligência artificial" />
-
-        <LinearLayout android:id="@+id/rowTeamAi" style="@style/SettingsRow">
-            <TextView android:id="@+id/rowTeamAiTitle" style="@style/SettingsRowTitle" android:text="Team AI" />
-            <TextView style="@style/SettingsRowValue" android:text="Edição/geração de imagem e mais" />
-        </LinearLayout>
-
-        <LinearLayout android:id="@+id/rowWellbeing" style="@style/SettingsRow">
-            <TextView android:id="@+id/rowWellbeingTitle" style="@style/SettingsRowTitle" android:text="Bem-estar digital" />
-            <TextView style="@style/SettingsRowValue" android:text="Tempo de uso" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

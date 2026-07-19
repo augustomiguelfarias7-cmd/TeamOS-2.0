@@ -6,7 +6,7 @@ Este documento descreve a arquitetura pretendida e o plano por fases. Um "OS com
 
 ```
 ┌──────────────────────────────────────────────┐
-│  TeamOS Shell (launcher, loja, Team AI, etc.) │  ← o que construímos
+│  TeamOS Shell (launcher, loja, assistente...) │  ← o que construímos
 ├──────────────────────────────────────────────┤
 │  Runtime de apps: WebView / iframe sandbox    │  ← exibidores dos web apps
 ├──────────────────────────────────────────────┤
@@ -31,9 +31,9 @@ A **Opção A (Android/Kotlin)** é a mais fiel à visão. A **Opção B** é ó
 ## Linguagens (conforme pedido)
 
 - **Kotlin/Java** — shell, launcher, serviços de sistema (Android).
-- **JavaScript/TypeScript** — Team AI (edição de imagem/vídeo no cliente) e apps web.
-- **Python** — pipelines de IA (upscale, tradução) do lado de serviço/ferramentas.
-- **C++** — módulos de performance (processamento de imagem/vídeo via JNI/NDK) quando necessário.
+- **JavaScript/TypeScript** — apps web e o assistente de IA (WebView).
+- **Python** — pipelines/ferramentas de apoio quando necessário.
+- **C++** — módulos de performance via JNI/NDK quando necessário.
 
 ## Componentes
 
@@ -49,24 +49,19 @@ Lê `data/apps.json`. "Instalar" cria um exibidor WebView (atalho) para a URL do
 ### 4. Runtime WebView
 Cada app abre numa janela WebView isolada (user-agent mobile, sem barra de endereço). Downloads e permissões controlados pelo sistema.
 
-### 5. Team AI
-- **Edição de imagem** (Photon/Puter.js ou libs JS/WebGL) — desenhar no touch, adicionar objetos, criar/editar imagens.
-- **Melhoria de vídeo** — extrai quadros, envia a um modelo de super-resolução de imagem, remonta o vídeo (sem gerar conteúdo novo; só aumenta qualidade). Sem prompt visível ao usuário.
-- **Legendas ao vivo** — modelo pequeno/local para traduzir fala em tempo real.
+### 5. IA do sistema (assistente)
+O recurso de IA do TeamOS é o **assistente padrão**: um overlay compacto do **ChatGPT** (ou Google Gemini) por cima dos apps, acessível pelo dock e projetado para o gesto de segurar o botão de energia. Alternável em Configurações. (Não há mais um pacote "Team AI" separado.)
 
-### 6. Assistente por botão de energia
-Segurar energia abre um overlay compacto do ChatGPT (ou Gemini) por cima dos apps. Alternável em Configurações.
-
-### 7. Navegador
+### 6. Navegador
 Busca padrão Google; IA (ChatGPT) na barra lateral; configurável (motor de busca).
 
-### 8. Configurações
-Idioma, assistente padrão, navegador/motor de busca, Bem-estar Digital, Team AI. Objetivo: bem completa.
+### 7. Configurações
+Idioma, assistente padrão, navegador/motor de busca, Bem-estar Digital. Objetivo: bem completa.
 
 ## Roadmap por fases
 
 - **Fase 1 — Fundação (atual):** catálogo de apps, i18n (7 idiomas), roadmap. ✅
 - **Fase 2 — Shell MVP:** setup wizard + launcher + loja + runtime WebView na plataforma escolhida.
 - **Fase 3 — Sistema:** Configurações, Navegador, Bloco de Notas, Galeria.
-- **Fase 4 — Team AI:** edição de imagem, upscale de vídeo, legendas ao vivo.
-- **Fase 5 — Assistente & polimento:** overlay de energia (ChatGPT/Gemini), IA na barra lateral, empacotamento.
+- **Fase 4 — Assistente & IA:** overlay do assistente (ChatGPT/Gemini), IA na barra lateral do navegador.
+- **Fase 5 — Polimento & empacotamento.**
