@@ -26,9 +26,8 @@ Este documento descreve a arquitetura pretendida e o plano por fases. Um "OS com
 | **A. Android nativo (Kotlin)** — launcher + WebView | Vira o "OS" real no aparelho; acesso a botão de energia, arquivos, galeria; instalável em celular | Build/toolchain mais pesados; teste em emulador |
 | **B. PWA/Web (JS/TS)** — protótipo no navegador | Demonstra tudo rápido; roda em qualquer lugar; fácil de iterar | Não vira um "OS" real; sem botão de energia/arquivos nativos |
 
-A **Opção A (Android/Kotlin)** é a mais fiel à visão. A **Opção B** é ótima para prototipar a UX antes.
 
-## Linguagens (conforme pedido)
+## Linguagens
 
 - **Kotlin/Java** — shell, launcher, serviços de sistema (Android).
 - **JavaScript/TypeScript** — apps web e o assistente de IA (WebView).
@@ -50,7 +49,7 @@ Lê `data/apps.json`. "Instalar" cria um exibidor WebView (atalho) para a URL do
 Cada app abre numa janela WebView isolada (user-agent mobile, sem barra de endereço). Downloads e permissões controlados pelo sistema.
 
 ### 5. IA do sistema (assistente)
-O recurso de IA do TeamOS é o **assistente padrão**: um overlay compacto do **ChatGPT** (ou Google Gemini) por cima dos apps, acessível pelo dock e projetado para o gesto de segurar o botão de energia. Alternável em Configurações. (Não há mais um pacote "Team AI" separado.)
+O recurso de IA do TeamOS é o **assistente padrão**: um overlay compacto do **ChatGPT** (ou Google Gemini) por cima dos apps, acessível pelo dock e projetado para o gesto de segurar o botão de energia. Alternável em Configurações.
 
 ### 6. Navegador
 Busca padrão Google; IA (ChatGPT) na barra lateral; configurável (motor de busca).
@@ -58,10 +57,3 @@ Busca padrão Google; IA (ChatGPT) na barra lateral; configurável (motor de bus
 ### 7. Configurações
 Idioma, assistente padrão, navegador/motor de busca, Bem-estar Digital. Objetivo: bem completa.
 
-## Roadmap por fases
-
-- **Fase 1 — Fundação (atual):** catálogo de apps, i18n (7 idiomas), roadmap. ✅
-- **Fase 2 — Shell MVP:** setup wizard + launcher + loja + runtime WebView na plataforma escolhida.
-- **Fase 3 — Sistema:** Configurações, Navegador, Bloco de Notas, Galeria.
-- **Fase 4 — Assistente & IA:** overlay do assistente (ChatGPT/Gemini), IA na barra lateral do navegador.
-- **Fase 5 — Polimento & empacotamento.**
