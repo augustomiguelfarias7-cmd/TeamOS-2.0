@@ -95,6 +95,7 @@ object IconLoader {
     private fun systemIconRes(id: String): Int = when (id) {
         "settings" -> R.drawable.ic_app_settings
         "gallery" -> R.drawable.ic_app_gallery
+        "camera" -> R.drawable.ic_app_camera
         "appstore", "store" -> R.drawable.ic_app_store
         "browser" -> R.drawable.ic_app_browser
         "notes" -> R.drawable.ic_app_notes

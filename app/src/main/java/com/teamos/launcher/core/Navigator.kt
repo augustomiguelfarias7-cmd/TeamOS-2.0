@@ -2,6 +2,7 @@ package com.teamos.launcher.core
 
 import android.content.Context
 import android.content.Intent
+import com.teamos.launcher.apps.CameraActivity
 import com.teamos.launcher.apps.GalleryActivity
 import com.teamos.launcher.apps.NotesActivity
 import com.teamos.launcher.apps.SimActivity
@@ -27,6 +28,7 @@ object Navigator {
             "browser" -> Intent(context, BrowserActivity::class.java)
             "notes" -> Intent(context, NotesActivity::class.java)
             "gallery" -> Intent(context, GalleryActivity::class.java)
+            "camera" -> Intent(context, CameraActivity::class.java)
             "wellbeing" -> Intent(context, WellbeingActivity::class.java)
             "sim" -> Intent(context, SimActivity::class.java)
             "sos" -> Intent(context, SosActivity::class.java)

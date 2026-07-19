@@ -11,7 +11,7 @@
 - **Assistente padrão** — ChatGPT (padrão) ou Google Gemini, alternável nas Configurações.
 - **Navegador** próprio com busca padrão Google e IA (ChatGPT) na barra lateral.
 - **Setup inicial** multilíngue (sem login): pt-BR (padrão), pt-PT, en-US, en-GB, coreano, japonês e hindi.
-- Apps pré-instalados: Galeria, Configurações, Bem-estar Digital, ChatGPT, Navegador, Bloco de Notas, Loja de Apps.
+- Apps pré-instalados: Câmera, Galeria, Configurações, Bem-estar Digital, ChatGPT, Navegador, Bloco de Notas, Loja de Apps.
 
 ## Estrutura do repositório
 

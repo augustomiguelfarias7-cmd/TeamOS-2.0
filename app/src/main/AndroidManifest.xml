@@ -4,8 +4,11 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <uses-feature android:name="android.hardware.telephony" android:required="false" />
+    <uses-feature android:name="android.hardware.camera.any" android:required="false" />
 
     <application
         android:allowBackup="true"
@@ -37,6 +40,7 @@
         <activity android:name=".settings.SettingsActivity" android:exported="false" />
         <activity android:name=".apps.NotesActivity" android:exported="false" />
         <activity android:name=".apps.GalleryActivity" android:exported="false" />
+        <activity android:name=".apps.CameraActivity" android:exported="false" />
         <activity android:name=".apps.WellbeingActivity" android:exported="false" />
         <activity android:name=".apps.SimActivity" android:exported="false" />
         <activity android:name=".apps.SosActivity" android:exported="false" />

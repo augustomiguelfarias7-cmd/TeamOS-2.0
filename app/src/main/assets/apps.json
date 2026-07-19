@@ -96,6 +96,7 @@
     { "id": "amazon", "name": "Amazon", "publisher": "Amazon", "category": "productivity", "url": "https://www.amazon.com/", "icon": "\ud83d\uded2", "description": "Compras online." },
 
     { "id": "gallery", "name": "Galeria", "publisher": "TeamOS", "category": "system", "url": "teamos://gallery", "icon": "\ud83d\uddbc\ufe0f", "preinstalled": true, "system": true, "description": "Galeria do sistema: fotos e v\u00eddeos." },
+    { "id": "camera", "name": "C\u00e2mera", "publisher": "TeamOS", "category": "system", "url": "teamos://camera", "icon": "\ud83d\udcf7", "preinstalled": true, "system": true, "description": "Tirar fotos e gravar v\u00eddeos, salvos na galeria." },
     { "id": "settings", "name": "Configura\u00e7\u00f5es", "publisher": "TeamOS", "category": "system", "url": "teamos://settings", "icon": "\u2699\ufe0f", "preinstalled": true, "system": true, "description": "Configura\u00e7\u00f5es do sistema." },
     { "id": "digital-wellbeing", "name": "Bem-estar Digital", "publisher": "TeamOS", "category": "system", "url": "teamos://wellbeing", "icon": "\ud83e\uddd8", "preinstalled": true, "system": true, "description": "Tempo de uso e limites de apps." },
     { "id": "phone", "name": "Telefone / SIM", "publisher": "TeamOS", "category": "system", "url": "teamos://sim", "icon": "\ud83d\udcde", "preinstalled": true, "system": true, "description": "Informa\u00e7\u00f5es de SIM, operadora e rede m\u00f3vel." },
