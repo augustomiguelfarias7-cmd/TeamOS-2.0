@@ -8,16 +8,23 @@ import android.provider.MediaStore
 import android.util.Base64
 import android.webkit.JavascriptInterface
 import android.webkit.WebChromeClient
+import android.webkit.WebResourceRequest
+import android.webkit.WebResourceResponse
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
+import androidx.webkit.WebViewAssetLoader
 
 /**
  * Team AI image editor/generator. Real cloud AI via Puter.js (free, no API key) loaded
  * inside a WebView from a bundled HTML page. Supports text-to-image generation plus
  * touch drawing / adding objects on a canvas, and saving the result to the gallery.
+ *
+ * The page is served through [WebViewAssetLoader] over an https origin
+ * (https://appassets.androidplatform.net/) because Puter.js refuses to run under the
+ * file:// scheme.
  */
 class TeamAiEditorActivity : AppCompatActivity() {
 
@@ -32,13 +39,21 @@ class TeamAiEditorActivity : AppCompatActivity() {
         with(webView.settings) {
             javaScriptEnabled = true
             domStorageEnabled = true
-            allowFileAccess = true
             mediaPlaybackRequiresUserGesture = false
         }
+
+        val assetLoader = WebViewAssetLoader.Builder()
+            .addPathHandler("/assets/", WebViewAssetLoader.AssetsPathHandler(this))
+            .build()
         webView.webChromeClient = WebChromeClient()
-        webView.webViewClient = WebViewClient()
+        webView.webViewClient = object : WebViewClient() {
+            override fun shouldInterceptRequest(
+                view: WebView,
+                request: WebResourceRequest
+            ): WebResourceResponse? = assetLoader.shouldInterceptRequest(request.url)
+        }
         webView.addJavascriptInterface(Bridge(), "TeamOS")
-        webView.loadUrl("file:///android_asset/teamai/editor.html")
+        webView.loadUrl("https://appassets.androidplatform.net/assets/teamai/editor.html")
 
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
