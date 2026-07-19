@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="16dp"
+        android:paddingBottom="24dp">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="Team AI"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="Pacote de inteligência artificial do sistema."
+            android:textColor="@color/white_60"
+            android:textSize="14sp" />
+
+        <LinearLayout android:id="@+id/rowEditImage" style="@style/SettingsRow">
+            <TextView android:id="@+id/rowEditImageTitle" style="@style/SettingsRowTitle" android:text="Editar imagem" />
+            <TextView style="@style/SettingsRowValue" android:text="Desenhar no touch, adicionar objetos, criar/editar imagens." />
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/rowEnhanceVideo" style="@style/SettingsRow">
+            <TextView android:id="@+id/rowEnhanceVideoTitle" style="@style/SettingsRowTitle" android:text="Melhorar qualidade do vídeo" />
+            <TextView style="@style/SettingsRowValue" android:text="Upscale quadro a quadro para um resultado mais cinematográfico." />
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/rowCaptions" style="@style/SettingsRow">
+            <TextView android:id="@+id/rowCaptionsTitle" style="@style/SettingsRowTitle" android:text="Legendas ao vivo" />
+            <TextView style="@style/SettingsRowValue" android:text="Tradução local em tempo real de fala em outro idioma." />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

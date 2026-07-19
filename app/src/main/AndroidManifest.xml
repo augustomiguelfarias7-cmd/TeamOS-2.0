@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.TeamOS"
+        android:usesCleartextTraffic="true">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:stateNotNeeded="true"
+            android:theme="@style/Theme.TeamOS.Launcher">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.HOME" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".setup.SetupActivity" android:exported="false" />
+        <activity android:name=".store.AppStoreActivity" android:exported="false" />
+        <activity android:name=".web.WebAppActivity" android:exported="false" />
+        <activity android:name=".web.BrowserActivity" android:exported="false" />
+        <activity android:name=".settings.SettingsActivity" android:exported="false" />
+        <activity android:name=".teamai.TeamAiActivity" android:exported="false" />
+        <activity android:name=".apps.NotesActivity" android:exported="false" />
+        <activity android:name=".apps.GalleryActivity" android:exported="false" />
+        <activity android:name=".apps.WellbeingActivity" android:exported="false" />
+        <activity
+            android:name=".assistant.AssistantOverlayActivity"
+            android:exported="false"
+            android:theme="@style/Theme.TeamOS.Overlay" />
+    </application>
+</manifest>

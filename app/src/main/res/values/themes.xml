@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Theme.TeamOS" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/teamos_accent</item>
+        <item name="colorSecondary">@color/teamos_accent_2</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowBackground">@drawable/bg_gradient</item>
+    </style>
+
+    <style name="Theme.TeamOS.Launcher" parent="Theme.TeamOS">
+        <item name="android:windowShowWallpaper">true</item>
+    </style>
+
+    <style name="Theme.TeamOS.Overlay" parent="Theme.TeamOS">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+</resources>
