@@ -23,8 +23,4 @@ docs/
   ARCHITECTURE.md      # Arquitetura e roadmap por fases
 ```
 
-A base técnica (plataforma de execução, launcher, runtime de WebView) está descrita em [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md). Este repositório está sendo construído em **fases** — veja o roadmap.
-
-## Status
-
-🚧 Em construção. Fase 1 (fundação): catálogo de apps, i18n e roadmap. A plataforma de UI (Android/Kotlin ou PWA web) está sendo definida com o mantenedor antes da Fase 2.
+A base técnica (plataforma de execução, launcher, runtime de WebView) está descrita em [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md). 
