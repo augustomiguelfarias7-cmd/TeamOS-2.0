@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="teamos_bg_top">#0B1026</color>
+    <color name="teamos_bg_bottom">#1B2350</color>
+    <color name="teamos_accent">#5B8CFF</color>
+    <color name="teamos_accent_2">#8A5BFF</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="white_80">#CCFFFFFF</color>
+    <color name="white_60">#99FFFFFF</color>
+    <color name="white_12">#1FFFFFFF</color>
+    <color name="white_24">#3DFFFFFF</color>
+    <color name="black">#FF000000</color>
+    <color name="scrim_70">#B3000000</color>
+    <color name="surface">#141A33</color>
+    <color name="surface_light">#20284A</color>
+    <color name="green">#3DDC84</color>
+    <color name="setup_bg">#000000</color>
+    <color name="red">#D93636</color>
+</resources>

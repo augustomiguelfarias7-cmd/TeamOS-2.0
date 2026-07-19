@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrim"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="bottom">
+
+    <LinearLayout
+        android:id="@+id/sheet"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.62"
+        android:orientation="vertical"
+        android:background="@drawable/bg_card"
+        android:layout_margin="10dp"
+        android:padding="6dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/overlayTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="\uD83E\uDD16  ChatGPT"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/closeButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="✕"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:paddingHorizontal="10dp"
+                android:clickable="true"
+                android:focusable="true" />
+        </LinearLayout>
+
+        <WebView
+            android:id="@+id/overlayWeb"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="16dp"
+        android:paddingBottom="24dp">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="4dp"
+            android:text="Configurações"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <TextView android:id="@+id/secConnections" style="@style/SettingsSection" android:text="Conexões" />
+
+        <LinearLayout android:id="@+id/rowWifi" style="@style/SettingsRow">
+            <TextView android:id="@+id/rowWifiTitle" style="@style/SettingsRowTitle" android:text="Wi-Fi e rede" />
+            <TextView style="@style/SettingsRowValue" android:text="Abrir painel de conexões" />
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/rowSim" style="@style/SettingsRow">
+            <TextView android:id="@+id/rowSimTitle" style="@style/SettingsRowTitle" android:text="SIM e rede móvel" />
+            <TextView style="@style/SettingsRowValue" android:text="Operadora, chip e número" />
+        </LinearLayout>
+
+        <TextView android:id="@+id/secPersonal" style="@style/SettingsSection" android:text="Personalização" />
+
+        <LinearLayout android:id="@+id/rowWallpaper" style="@style/SettingsRow">
+            <TextView android:id="@+id/rowWallpaperTitle" style="@style/SettingsRowTitle" android:text="Papel de parede" />
+            <TextView android:id="@+id/rowWallpaperValue" style="@style/SettingsRowValue" android:text="Padrão" />
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/rowLanguage" style="@style/SettingsRow">
+            <TextView android:id="@+id/rowLanguageTitle" style="@style/SettingsRowTitle" android:text="Idioma" />
+            <TextView android:id="@+id/rowLanguageValue" style="@style/SettingsRowValue" android:text="Português (Brasil)" />
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/rowWellbeing" style="@style/SettingsRow">
+            <TextView android:id="@+id/rowWellbeingTitle" style="@style/SettingsRowTitle" android:text="Bem-estar digital" />
+            <TextView style="@style/SettingsRowValue" android:text="Tempo de uso" />
+        </LinearLayout>
+
+        <TextView android:id="@+id/secAssistant" style="@style/SettingsSection" android:text="Assistente e busca" />
+
+        <LinearLayout android:id="@+id/rowAssistant" style="@style/SettingsRow">
+            <TextView android:id="@+id/rowAssistantTitle" style="@style/SettingsRowTitle" android:text="Assistente padrão" />
+            <TextView android:id="@+id/rowAssistantValue" style="@style/SettingsRowValue" android:text="ChatGPT" />
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/rowSearch" style="@style/SettingsRow">
+            <TextView android:id="@+id/rowSearchTitle" style="@style/SettingsRowTitle" android:text="Motor de busca" />
+            <TextView android:id="@+id/rowSearchValue" style="@style/SettingsRowValue" android:text="Google" />
+        </LinearLayout>
+
+        <TextView android:id="@+id/secSecurity" style="@style/SettingsSection" android:text="Segurança" />
+
+        <LinearLayout android:id="@+id/rowLock" style="@style/SettingsRow">
+            <TextView android:id="@+id/rowLockTitle" style="@style/SettingsRowTitle" android:text="Bloqueio (PIN)" />
+            <TextView android:id="@+id/rowLockValue" style="@style/SettingsRowValue" android:text="Desativado" />
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/rowSos" style="@style/SettingsRow">
+            <TextView android:id="@+id/rowSosTitle" style="@style/SettingsRowTitle" android:text="SOS" />
+            <TextView style="@style/SettingsRowValue" android:text="Mensagem de emergência" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

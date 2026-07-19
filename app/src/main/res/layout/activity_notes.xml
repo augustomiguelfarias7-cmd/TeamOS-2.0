@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    android:paddingHorizontal="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:text="Bloco de Notas"
+        android:textColor="@color/white"
+        android:textSize="26sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/notes"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginVertical="12dp"
+        android:background="@drawable/bg_card"
+        android:padding="16dp"
+        android:gravity="top|start"
+        android:hint="Escreva aqui..."
+        android:textColorHint="@color/white_60"
+        android:textColor="@color/white"
+        android:inputType="textMultiLine|textCapSentences"
+        android:scrollbars="vertical" />
+</LinearLayout>

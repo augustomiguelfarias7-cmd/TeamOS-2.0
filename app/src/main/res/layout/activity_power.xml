@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/powerRoot">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:layout_marginHorizontal="32dp"
+        android:background="@drawable/bg_card"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/powerTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Energia"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/powerLock"
+            style="@style/SetupPrimary"
+            android:layout_marginTop="20dp"
+            android:text="Bloquear" />
+
+        <TextView
+            android:id="@+id/powerRestart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_pill"
+            android:gravity="center"
+            android:paddingVertical="16dp"
+            android:text="Reiniciar"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <TextView
+            android:id="@+id/powerShutdown"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_pill"
+            android:gravity="center"
+            android:paddingVertical="16dp"
+            android:text="Desligar"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <TextView
+            android:id="@+id/powerNote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:text="Desligar/Reiniciar de verdade exige uma build de sistema."
+            android:textColor="@color/white_60"
+            android:textSize="12sp" />
+    </LinearLayout>
+</FrameLayout>

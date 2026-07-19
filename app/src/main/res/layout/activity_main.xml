@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/homeRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/wallpaper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:contentDescription="@null"
+        android:src="@drawable/bg_gradient" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:fitsSystemWindows="true"
+        android:paddingHorizontal="16dp">
+
+        <TextView
+            android:id="@+id/clock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="TeamOS"
+            android:textColor="@color/white"
+            android:textSize="34sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2.0"
+            android:textColor="@color/white_60"
+            android:textSize="14sp" />
+
+        <LinearLayout
+            android:id="@+id/searchBar"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/bg_search"
+            android:paddingHorizontal="18dp"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_search" />
+
+            <TextView
+                android:id="@+id/searchHint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="Buscar na web com Google"
+                android:textColor="@color/white_60"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/appGrid"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="16dp"
+            android:clipToPadding="false"
+            android:paddingBottom="12dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="18dp"
+            android:orientation="horizontal"
+            android:background="@drawable/bg_dock"
+            android:padding="8dp"
+            android:weightSum="4">
+
+            <LinearLayout android:id="@+id/dockStore" style="@style/DockItem">
+                <ImageView style="@style/DockIcon" android:background="@null" android:scaleType="fitCenter" android:contentDescription="@null" android:src="@drawable/ic_app_store" />
+            </LinearLayout>
+
+            <LinearLayout android:id="@+id/dockBrowser" style="@style/DockItem">
+                <ImageView style="@style/DockIcon" android:background="@null" android:scaleType="fitCenter" android:contentDescription="@null" android:src="@drawable/ic_app_browser" />
+            </LinearLayout>
+
+            <LinearLayout android:id="@+id/dockAssistant" style="@style/DockItem">
+                <ImageView style="@style/DockIcon" android:background="@null" android:scaleType="fitCenter" android:contentDescription="@null" android:src="@drawable/ic_app_assistant" />
+            </LinearLayout>
+
+            <LinearLayout android:id="@+id/dockSettings" style="@style/DockItem">
+                <ImageView style="@style/DockIcon" android:background="@null" android:scaleType="fitCenter" android:contentDescription="@null" android:src="@drawable/ic_app_settings" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

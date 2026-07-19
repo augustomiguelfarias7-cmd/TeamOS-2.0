@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/setup_bg"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:fitsSystemWindows="true"
+    android:padding="32dp">
+
+    <ImageView
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:contentDescription="@null"
+        android:src="@drawable/ic_teamos_logo" />
+
+    <TextView
+        android:id="@+id/lockTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Digite seu PIN"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/pinField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/bg_pill"
+        android:gravity="center"
+        android:inputType="numberPassword"
+        android:maxLength="8"
+        android:paddingVertical="16dp"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/unlockButton"
+        style="@style/SetupPrimary"
+        android:layout_marginTop="16dp"
+        android:text="Desbloquear" />
+</LinearLayout>

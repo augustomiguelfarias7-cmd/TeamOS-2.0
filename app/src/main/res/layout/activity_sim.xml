@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="16dp"
+        android:paddingBottom="24dp">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="SIM e rede móvel"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+        <LinearLayout android:id="@+id/rowCarrier" style="@style/SettingsRow" android:layout_marginTop="16dp">
+            <TextView android:id="@+id/rowCarrierTitle" style="@style/SettingsRowTitle" android:text="Operadora" />
+            <TextView android:id="@+id/rowCarrierValue" style="@style/SettingsRowValue" android:text="—" />
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/rowState" style="@style/SettingsRow">
+            <TextView android:id="@+id/rowStateTitle" style="@style/SettingsRowTitle" android:text="Estado do SIM" />
+            <TextView android:id="@+id/rowStateValue" style="@style/SettingsRowValue" android:text="—" />
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/rowNumber" style="@style/SettingsRow">
+            <TextView android:id="@+id/rowNumberTitle" style="@style/SettingsRowTitle" android:text="Número" />
+            <TextView android:id="@+id/rowNumberValue" style="@style/SettingsRowValue" android:text="—" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/note"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Ler dados do SIM exige a permissão de telefone e um chip presente."
+            android:textColor="@color/white_60"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/grant"
+            style="@style/SetupPrimary"
+            android:layout_marginTop="16dp"
+            android:text="Conceder permissão" />
+    </LinearLayout>
+</ScrollView>
