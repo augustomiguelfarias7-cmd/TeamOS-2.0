@@ -1,9 +1,12 @@
 package com.teamos.launcher.setup
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.provider.Settings
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -14,13 +17,12 @@ import com.teamos.launcher.databinding.ActivitySetupBinding
 import com.teamos.launcher.i18n.LocaleInfo
 import com.teamos.launcher.i18n.Strings
 
-/** First-boot wizard (no login): Welcome -> Language -> Assistant -> Done. */
+/** First-boot wizard (no login): Welcome -> Network -> Language -> Optional PIN -> Done. */
 class SetupActivity : AppCompatActivity() {
 
     private lateinit var b: ActivitySetupBinding
     private lateinit var prefs: Prefs
     private var chosenLocale = Prefs.DEFAULT_LOCALE
-    private var chosenAssistant = "chatgpt"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,16 +31,20 @@ class SetupActivity : AppCompatActivity() {
         prefs = Prefs(this)
         chosenLocale = prefs.locale
 
-        applyWelcomeStrings()
-        b.goButton.setOnClickListener { goToLanguage() }
+        applyStrings()
+
+        b.goButton.setOnClickListener { b.flipper.displayedChild = STEP_NETWORK }
+        b.netOpenWifi.setOnClickListener { openWifiPanel() }
+        b.netNext.setOnClickListener { b.flipper.displayedChild = STEP_LANGUAGE }
 
         buildLanguageList()
-        b.langNext.setOnClickListener { goToAssistant() }
+        b.langNext.setOnClickListener {
+            prefs.locale = chosenLocale
+            applyStrings()
+            b.flipper.displayedChild = STEP_LOCK
+        }
 
-        b.optChatgpt.setOnClickListener { selectAssistant("chatgpt") }
-        b.optGemini.setOnClickListener { selectAssistant("gemini") }
-        selectAssistant(chosenAssistant)
-
+        b.lockNext.setOnClickListener { applyLockAndFinishStep() }
         b.finishButton.setOnClickListener { finishSetup() }
 
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
@@ -53,10 +59,38 @@ class SetupActivity : AppCompatActivity() {
         })
     }
 
-    private fun applyWelcomeStrings() {
-        b.welcomeTitle.text = Strings.forLocale(this, chosenLocale, "setup.welcome.title")
-        b.welcomeSubtitle.text = Strings.forLocale(this, chosenLocale, "setup.welcome.subtitle")
+    private fun applyStrings() {
+        b.welcomeTitle.text = Strings.forLocale(this, chosenLocale, "setup.welcome.subtitle")
         b.goButton.text = Strings.forLocale(this, chosenLocale, "setup.welcome.go")
+
+        b.netTitle.text = Strings.forLocale(this, chosenLocale, "setup.network.title")
+        b.netSubtitle.text = Strings.forLocale(this, chosenLocale, "setup.network.subtitle")
+        b.netOpenWifi.text = Strings.forLocale(this, chosenLocale, "setup.network.open_wifi")
+        b.netNext.text = Strings.forLocale(this, chosenLocale, "setup.next")
+
+        b.langTitle.text = Strings.forLocale(this, chosenLocale, "setup.language.title")
+        b.langSubtitle.text = Strings.forLocale(this, chosenLocale, "setup.language.subtitle")
+        b.langNext.text = Strings.forLocale(this, chosenLocale, "setup.next")
+
+        b.lockTitle.text = Strings.forLocale(this, chosenLocale, "setup.lock.title")
+        b.lockSubtitle.text = Strings.forLocale(this, chosenLocale, "setup.lock.subtitle")
+        b.pinField.hint = Strings.forLocale(this, chosenLocale, "setup.lock.pin_hint")
+        b.pinConfirm.hint = Strings.forLocale(this, chosenLocale, "setup.lock.confirm_hint")
+        b.lockNext.text = Strings.forLocale(this, chosenLocale, "setup.next")
+
+        b.doneTitle.text = Strings.forLocale(this, chosenLocale, "setup.done.title")
+        b.doneSubtitle.text = Strings.forLocale(this, chosenLocale, "setup.done.subtitle")
+        b.finishButton.text = Strings.forLocale(this, chosenLocale, "setup.finish")
+    }
+
+    private fun openWifiPanel() {
+        val intent = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            Intent(Settings.Panel.ACTION_WIFI)
+        } else {
+            Intent(Settings.ACTION_WIFI_SETTINGS)
+        }
+        runCatching { startActivity(intent) }
+            .onFailure { startActivity(Intent(Settings.ACTION_WIRELESS_SETTINGS)) }
     }
 
     private fun buildLanguageList() {
@@ -64,7 +98,6 @@ class SetupActivity : AppCompatActivity() {
         for (loc in Strings.locales(this)) {
             b.langList.addView(localeRow(loc))
         }
-        refreshLanguageStrings()
     }
 
     private fun localeRow(loc: LocaleInfo): TextView {
@@ -84,48 +117,47 @@ class SetupActivity : AppCompatActivity() {
         row.isSelected = loc.code == chosenLocale
         row.setOnClickListener {
             chosenLocale = loc.code
+            prefs.locale = chosenLocale
             for (i in 0 until b.langList.childCount) {
                 val child = b.langList.getChildAt(i)
                 child.isSelected = child.tag == loc.code
             }
-            refreshLanguageStrings()
+            applyStrings()
         }
         return row
     }
 
-    private fun refreshLanguageStrings() {
-        b.langTitle.text = Strings.forLocale(this, chosenLocale, "setup.language.title")
-        b.langSubtitle.text = Strings.forLocale(this, chosenLocale, "setup.language.subtitle")
-        b.langNext.text = Strings.forLocale(this, chosenLocale, "setup.next")
-    }
-
-    private fun selectAssistant(which: String) {
-        chosenAssistant = which
-        b.optChatgpt.isSelected = which == "chatgpt"
-        b.optGemini.isSelected = which == "gemini"
-        b.asstTitle.text = Strings.forLocale(this, chosenLocale, "setup.assistant.title")
-        b.asstSubtitle.text = Strings.forLocale(this, chosenLocale, "setup.assistant.subtitle")
-        b.finishButton.text = Strings.forLocale(this, chosenLocale, "setup.finish")
-    }
-
-    private fun goToLanguage() {
-        refreshLanguageStrings()
-        b.flipper.displayedChild = 1
-    }
-
-    private fun goToAssistant() {
-        prefs.locale = chosenLocale
-        selectAssistant(chosenAssistant)
-        b.flipper.displayedChild = 2
+    private fun applyLockAndFinishStep() {
+        val pin = b.pinField.text.toString()
+        val confirm = b.pinConfirm.text.toString()
+        when {
+            pin.isEmpty() -> prefs.clearLock()
+            pin.length < 4 -> {
+                Toast.makeText(this, Strings.forLocale(this, chosenLocale, "setup.lock.too_short"), Toast.LENGTH_SHORT).show()
+                return
+            }
+            pin != confirm -> {
+                Toast.makeText(this, Strings.forLocale(this, chosenLocale, "setup.lock.mismatch"), Toast.LENGTH_SHORT).show()
+                return
+            }
+            else -> prefs.setPin(pin)
+        }
+        b.flipper.displayedChild = STEP_DONE
     }
 
     private fun finishSetup() {
         prefs.locale = chosenLocale
-        prefs.assistant = chosenAssistant
         prefs.setupComplete = true
         startActivity(Intent(this, MainActivity::class.java))
         finish()
     }
 
     private fun dp(v: Int): Int = (v * resources.displayMetrics.density).toInt()
+
+    companion object {
+        private const val STEP_NETWORK = 1
+        private const val STEP_LANGUAGE = 2
+        private const val STEP_LOCK = 3
+        private const val STEP_DONE = 4
+    }
 }

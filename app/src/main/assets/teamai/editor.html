@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>Team AI</title>
+<script src="https://js.puter.com/v2/"></script>
+<style>
+  :root { --bg:#0B1026; --card:#141A33; --accent:#5B8CFF; --accent2:#8A5BFF; --text:#fff; --muted:#99a; }
+  * { box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  body { margin:0; font-family:system-ui,Roboto,sans-serif; background:var(--bg); color:var(--text); }
+  header { padding:16px; font-size:20px; font-weight:700;
+    background:linear-gradient(135deg,var(--accent),var(--accent2)); }
+  .wrap { padding:14px; }
+  .card { background:var(--card); border-radius:18px; padding:14px; margin-bottom:14px; }
+  textarea, input[type=text] { width:100%; border:none; border-radius:12px; padding:12px;
+    background:#20284A; color:#fff; font-size:15px; resize:vertical; }
+  .row { display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; }
+  button { flex:1; min-width:120px; border:none; border-radius:12px; padding:13px; font-size:15px;
+    font-weight:600; color:#fff; background:linear-gradient(135deg,var(--accent),var(--accent2)); }
+  button.ghost { background:#20284A; }
+  #status { color:var(--muted); font-size:13px; margin-top:10px; min-height:18px; }
+  canvas { width:100%; background:#0a0f22; border-radius:12px; touch-action:none; display:block; }
+  .tools { display:flex; gap:8px; align-items:center; margin-top:10px; flex-wrap:wrap; }
+  .swatch { width:28px; height:28px; border-radius:50%; border:2px solid #ffffff40; }
+  label { font-size:13px; color:var(--muted); }
+</style>
+</head>
+<body>
+<header id="hdr">Team AI</header>
+<div class="wrap">
+
+  <div class="card">
+    <div id="lblGen" style="font-weight:600;margin-bottom:8px;">Gerar imagem</div>
+    <textarea id="prompt" rows="2" placeholder="Descreva a imagem..."></textarea>
+    <div class="row">
+      <button id="btnGen">Gerar</button>
+      <button id="btnToCanvas" class="ghost">Enviar para edição</button>
+    </div>
+    <div id="status"></div>
+  </div>
+
+  <div class="card">
+    <div id="lblEdit" style="font-weight:600;margin-bottom:8px;">Editar / desenhar</div>
+    <canvas id="cv" width="720" height="720"></canvas>
+    <div class="tools">
+      <label>Cor</label>
+      <span class="swatch" style="background:#ffffff" data-c="#ffffff"></span>
+      <span class="swatch" style="background:#ff4d4d" data-c="#ff4d4d"></span>
+      <span class="swatch" style="background:#5B8CFF" data-c="#5B8CFF"></span>
+      <span class="swatch" style="background:#3DDC84" data-c="#3DDC84"></span>
+      <span class="swatch" style="background:#FBBC05" data-c="#FBBC05"></span>
+      <label>Traço <input id="size" type="range" min="2" max="48" value="10"></label>
+    </div>
+    <div class="row">
+      <button id="btnClear" class="ghost">Limpar</button>
+      <button id="btnDownload">Salvar imagem</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  var statusEl = document.getElementById('status');
+  var img = null;
+  var cv = document.getElementById('cv');
+  var ctx = cv.getContext('2d');
+  var drawing = false, color = '#ffffff', size = 10;
+
+  function setStatus(t){ statusEl.textContent = t || ''; }
+
+  document.getElementById('btnGen').onclick = async function(){
+    var p = document.getElementById('prompt').value.trim();
+    if(!p){ setStatus('Digite uma descrição.'); return; }
+    setStatus('Gerando na nuvem (Puter.js)...');
+    try {
+      img = await puter.ai.txt2img(p);
+      img.style.width='100%'; img.style.borderRadius='12px';
+      var host = document.getElementById('lblGen').parentNode;
+      var old = document.getElementById('genImg');
+      if(old) old.remove();
+      img.id='genImg';
+      host.insertBefore(img, statusEl);
+      setStatus('Pronto.');
+    } catch(e){ setStatus('Falha na geração: ' + e); }
+  };
+
+  document.getElementById('btnToCanvas').onclick = function(){
+    if(!img){ setStatus('Gere uma imagem primeiro.'); return; }
+    var i = new Image();
+    i.crossOrigin = 'anonymous';
+    i.onload = function(){ ctx.clearRect(0,0,cv.width,cv.height); ctx.drawImage(i,0,0,cv.width,cv.height); };
+    i.onerror = function(){ setStatus('Não foi possível carregar a imagem no editor.'); };
+    i.src = img.src;
+  };
+
+  var swatches = document.querySelectorAll('.swatch');
+  swatches.forEach(function(s){ s.onclick = function(){ color = s.getAttribute('data-c'); }; });
+  document.getElementById('size').oninput = function(e){ size = +e.target.value; };
+
+  function pos(e){
+    var r = cv.getBoundingClientRect();
+    var t = e.touches ? e.touches[0] : e;
+    return { x:(t.clientX-r.left)*cv.width/r.width, y:(t.clientY-r.top)*cv.height/r.height };
+  }
+  function start(e){ drawing=true; var p=pos(e); ctx.beginPath(); ctx.moveTo(p.x,p.y); e.preventDefault(); }
+  function move(e){ if(!drawing) return; var p=pos(e);
+    ctx.strokeStyle=color; ctx.lineWidth=size; ctx.lineCap='round'; ctx.lineJoin='round';
+    ctx.lineTo(p.x,p.y); ctx.stroke(); e.preventDefault(); }
+  function end(){ drawing=false; }
+  cv.addEventListener('mousedown',start); cv.addEventListener('mousemove',move); window.addEventListener('mouseup',end);
+  cv.addEventListener('touchstart',start,{passive:false}); cv.addEventListener('touchmove',move,{passive:false}); cv.addEventListener('touchend',end);
+
+  document.getElementById('btnClear').onclick = function(){ ctx.clearRect(0,0,cv.width,cv.height); };
+  document.getElementById('btnDownload').onclick = function(){
+    var data = cv.toDataURL('image/png');
+    if (window.TeamOS && window.TeamOS.saveImage) {
+      TeamOS.saveImage(data);
+      setStatus('Imagem salva na Galeria.');
+    } else {
+      var a = document.createElement('a');
+      a.href = data; a.download = 'teamai.png'; a.click();
+      setStatus('Imagem salva.');
+    }
+  };
+
+  // Localized labels injected by the host app via ?t=... would go here; defaults are pt-BR.
+</script>
+</body>
+</html>

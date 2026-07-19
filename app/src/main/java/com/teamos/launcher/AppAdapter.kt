@@ -3,6 +3,7 @@ package com.teamos.launcher
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.teamos.launcher.core.IconLoader
 import com.teamos.launcher.data.AppEntry
 import com.teamos.launcher.databinding.ItemAppBinding
 
@@ -22,7 +23,7 @@ class AppAdapter(
 
     override fun onBindViewHolder(holder: VH, position: Int) {
         val app = items[position]
-        holder.b.icon.text = app.icon
+        IconLoader.into(holder.b.icon.context, app, holder.b.icon)
         holder.b.label.text = app.name
         holder.b.root.setOnClickListener { onClick(app) }
         holder.b.root.setOnLongClickListener { onLongClick(app); true }

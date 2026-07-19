@@ -3,50 +3,49 @@
     android:id="@+id/flipper"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/setup_bg"
     android:fitsSystemWindows="true"
     android:padding="24dp">
 
-    <!-- Step 1: Welcome -->
+    <!-- Step 1: Welcome (black) -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center">
 
+        <ImageView
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_teamos_logo" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="\uD83D\uDC4B"
-            android:textSize="64sp" />
+            android:layout_marginTop="24dp"
+            android:text="TeamOS 2.0"
+            android:textColor="@color/white"
+            android:textSize="34sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/welcomeTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             android:gravity="center"
-            android:text="Olá, tudo bem com você?"
-            android:textColor="@color/white"
-            android:textSize="28sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/welcomeSubtitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:gravity="center"
-            android:text="Você vai ter que configurar seu dispositivo."
+            android:text="Olá, tudo bem? Vem usar o TeamOS"
             android:textColor="@color/white_80"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/goButton"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="48dp"
             android:background="@drawable/bg_button_primary"
-            android:paddingHorizontal="56dp"
+            android:gravity="center"
             android:paddingVertical="16dp"
             android:text="Ir"
             android:textColor="@color/white"
@@ -56,30 +55,52 @@
             android:focusable="true" />
     </LinearLayout>
 
-    <!-- Step 2: Language -->
+    <!-- Step 2: Network -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/langTitle"
+            android:id="@+id/netTitle"
+            style="@style/SetupHeader"
+            android:text="Conectar a uma rede" />
+
+        <TextView
+            android:id="@+id/netSubtitle"
+            style="@style/SetupSub"
+            android:text="Conecte-se ao Wi-Fi para configurar o TeamOS." />
+
+        <TextView
+            android:id="@+id/netOpenWifi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="Que língua você usa?"
+            android:background="@drawable/bg_pill"
+            android:paddingVertical="18dp"
+            android:paddingHorizontal="20dp"
+            android:text="Abrir configurações de Wi-Fi"
             android:textColor="@color/white"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textSize="16sp"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <View android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" />
 
         <TextView
-            android:id="@+id/langSubtitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Você pode alterar isso depois nas Configurações."
-            android:textColor="@color/white_60"
-            android:textSize="14sp" />
+            android:id="@+id/netNext"
+            style="@style/SetupPrimary"
+            android:text="Avançar" />
+    </LinearLayout>
+
+    <!-- Step 3: Language -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView android:id="@+id/langTitle" style="@style/SetupHeader" android:text="Que língua você usa?" />
+        <TextView android:id="@+id/langSubtitle" style="@style/SetupSub" android:text="Você pode alterar isso depois nas Configurações." />
 
         <ScrollView
             android:layout_width="match_parent"
@@ -94,91 +115,89 @@
                 android:orientation="vertical" />
         </ScrollView>
 
-        <TextView
-            android:id="@+id/langNext"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_button_primary"
-            android:paddingVertical="16dp"
-            android:gravity="center"
-            android:text="Avançar"
-            android:textColor="@color/white"
-            android:textSize="17sp"
-            android:textStyle="bold"
-            android:clickable="true"
-            android:focusable="true" />
+        <TextView android:id="@+id/langNext" style="@style/SetupPrimary" android:text="Avançar" />
     </LinearLayout>
 
-    <!-- Step 3: Assistant -->
+    <!-- Step 4: Lock (optional PIN) -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/asstTitle"
+        <TextView android:id="@+id/lockTitle" style="@style/SetupHeader" android:text="Proteja seu aparelho" />
+        <TextView android:id="@+id/lockSubtitle" style="@style/SetupSub" android:text="Defina um PIN (opcional). Deixe em branco para pular." />
+
+        <EditText
+            android:id="@+id/pinField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="Escolha seu assistente"
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/asstSubtitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Segure o botão de energia para chamar seu assistente."
-            android:textColor="@color/white_60"
-            android:textSize="14sp" />
-
-        <TextView
-            android:id="@+id/optChatgpt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:background="@drawable/bg_pill"
-            android:paddingVertical="18dp"
+            android:hint="PIN (4 a 8 dígitos)"
+            android:textColorHint="@color/white_60"
+            android:inputType="numberPassword"
+            android:maxLength="8"
+            android:paddingVertical="16dp"
             android:paddingHorizontal="20dp"
-            android:text="\uD83E\uDD16  ChatGPT"
-            android:textColor="@color/white"
-            android:textSize="17sp"
-            android:clickable="true"
-            android:focusable="true" />
+            android:textColor="@color/white" />
 
-        <TextView
-            android:id="@+id/optGemini"
+        <EditText
+            android:id="@+id/pinConfirm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:background="@drawable/bg_pill"
-            android:paddingVertical="18dp"
+            android:hint="Confirmar PIN"
+            android:textColorHint="@color/white_60"
+            android:inputType="numberPassword"
+            android:maxLength="8"
+            android:paddingVertical="16dp"
             android:paddingHorizontal="20dp"
-            android:text="\u2728  Google Gemini"
-            android:textColor="@color/white"
-            android:textSize="17sp"
-            android:clickable="true"
-            android:focusable="true" />
+            android:textColor="@color/white" />
 
-        <View
+        <View android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" />
+
+        <TextView android:id="@+id/lockNext" style="@style/SetupPrimary" android:text="Avançar" />
+    </LinearLayout>
+
+    <!-- Step 5: Finish -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_teamos_logo" />
+
+        <TextView
+            android:id="@+id/doneTitle"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:gravity="center"
+            android:text="Tudo pronto!"
+            android:textColor="@color/white"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/doneSubtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:text="Bem-vindo ao TeamOS 2.0."
+            android:textColor="@color/white_80"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/finishButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_button_primary"
-            android:paddingVertical="16dp"
-            android:gravity="center"
-            android:text="Concluir"
-            android:textColor="@color/white"
-            android:textSize="17sp"
-            android:textStyle="bold"
-            android:clickable="true"
-            android:focusable="true" />
+            style="@style/SetupPrimary"
+            android:layout_marginTop="40dp"
+            android:text="Concluir" />
     </LinearLayout>
 </ViewFlipper>

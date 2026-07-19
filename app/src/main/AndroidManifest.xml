@@ -3,6 +3,9 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <uses-feature android:name="android.hardware.telephony" android:required="false" />
 
     <application
         android:allowBackup="true"
@@ -36,6 +39,15 @@
         <activity android:name=".apps.NotesActivity" android:exported="false" />
         <activity android:name=".apps.GalleryActivity" android:exported="false" />
         <activity android:name=".apps.WellbeingActivity" android:exported="false" />
+        <activity android:name=".apps.SimActivity" android:exported="false" />
+        <activity android:name=".apps.SosActivity" android:exported="false" />
+        <activity android:name=".teamai.TeamAiEditorActivity" android:exported="false" />
+        <activity android:name=".lock.LockActivity" android:exported="false" />
+        <activity android:name=".power.PowerScreenActivity" android:exported="false" />
+        <activity
+            android:name=".power.PowerMenuActivity"
+            android:exported="false"
+            android:theme="@style/Theme.TeamOS.Overlay" />
         <activity
             android:name=".assistant.AssistantOverlayActivity"
             android:exported="false"

@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.Intent
 import com.teamos.launcher.apps.GalleryActivity
 import com.teamos.launcher.apps.NotesActivity
+import com.teamos.launcher.apps.SimActivity
+import com.teamos.launcher.apps.SosActivity
 import com.teamos.launcher.apps.WellbeingActivity
 import com.teamos.launcher.data.AppEntry
 import com.teamos.launcher.settings.SettingsActivity
@@ -28,6 +30,8 @@ object Navigator {
             "notes" -> Intent(context, NotesActivity::class.java)
             "gallery" -> Intent(context, GalleryActivity::class.java)
             "wellbeing" -> Intent(context, WellbeingActivity::class.java)
+            "sim" -> Intent(context, SimActivity::class.java)
+            "sos" -> Intent(context, SosActivity::class.java)
             else -> Intent(context, AppStoreActivity::class.java)
         }
         context.startActivity(intent)

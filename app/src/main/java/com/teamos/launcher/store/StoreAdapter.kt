@@ -3,6 +3,7 @@ package com.teamos.launcher.store
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.teamos.launcher.core.IconLoader
 import com.teamos.launcher.core.Prefs
 import com.teamos.launcher.data.AppEntry
 import com.teamos.launcher.databinding.ItemStoreBinding
@@ -25,7 +26,7 @@ class StoreAdapter(
     override fun onBindViewHolder(holder: VH, position: Int) {
         val app = items[position]
         val ctx = holder.b.root.context
-        holder.b.icon.text = app.icon
+        IconLoader.into(ctx, app, holder.b.icon)
         holder.b.name.text = app.name
         holder.b.publisher.text = app.publisher
         holder.b.desc.text = app.description
