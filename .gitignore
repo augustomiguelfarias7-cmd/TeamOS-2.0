@@ -1,0 +1,23 @@
+# Node / web
+node_modules/
+dist/
+build/
+.next/
+*.log
+.env
+.env.*
+
+# Android / Gradle
+.gradle/
+local.properties
+*.apk
+*.aab
+captures/
+.cxx/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+*.iml
+.vscode/
