@@ -1,12 +1,8 @@
-# TeamOS 2.0 — Arquitetura & Roadmap
+9# TeamOS 2.0 — Arquitetura & Roadmap
 
 Este documento descreve a arquitetura pretendida e o plano por fases. Um "OS completo" (kernel + init + drivers) não é construído do zero — o TeamOS é uma **camada de experiência** (shell/launcher + runtime de apps WebView) que roda **sobre um núcleo Linux/Android existente**. Isso é como Chrome OS e Android funcionam na prática.
 
-## Camadas
-
-```
-┌──────────────────────────────────────────────┐
-│  TeamOS Shell (launcher, loja, assistente.
+TeamOS Shell (launcher, loja, assistente.
 
 **Por que reutilizar Android/Linux como base?** Escrever kernel, drivers e init do zero levaria anos e não roda em hardware real de celular sem enorme esforço. Reutilizar o núcleo Linux (via Android) nos dá drivers, gerenciamento de arquivos, energia e touch de graça — e o TeamOS vira o launcher + suíte de apps do sistema. Um app *launcher* no Android substitui a tela inicial e é, na prática, "o sistema" do ponto de vista do usuário.
 
@@ -42,4 +38,5 @@ Busca padrão Google; IA (ChatGPT) na barra lateral; configurável (motor de bus
 
 ### 7. Configurações
 Idioma, assistente padrão, navegador/motor de busca, Bem-estar Digital. Objetivo: bem completa.
+
 
