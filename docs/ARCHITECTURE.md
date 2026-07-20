@@ -6,25 +6,11 @@ Este documento descreve a arquitetura pretendida e o plano por fases. Um "OS com
 
 ```
 ┌──────────────────────────────────────────────┐
-│  TeamOS Shell (launcher, loja, assistente...) │  ← o que construímos
-├──────────────────────────────────────────────┤
-│  Runtime de apps: WebView / iframe sandbox    │  ← exibidores dos web apps
-├──────────────────────────────────────────────┤
-│  Serviços de sistema (i18n, settings, IA)     │
-├──────────────────────────────────────────────┤
-│  Núcleo: Android (Linux kernel, init, HAL,    │  ← base reutilizada
-│  drivers, gerenciador de arquivos)            │
-└──────────────────────────────────────────────┘
-```
+│  TeamOS Shell (launcher, loja, assistente.
 
 **Por que reutilizar Android/Linux como base?** Escrever kernel, drivers e init do zero levaria anos e não roda em hardware real de celular sem enorme esforço. Reutilizar o núcleo Linux (via Android) nos dá drivers, gerenciamento de arquivos, energia e touch de graça — e o TeamOS vira o launcher + suíte de apps do sistema. Um app *launcher* no Android substitui a tela inicial e é, na prática, "o sistema" do ponto de vista do usuário.
 
 ## Opções de plataforma para o Shell
-
-| Opção | Prós | Contras |
-|---|---|---|
-| **A. Android nativo (Kotlin)** — launcher + WebView | Vira o "OS" real no aparelho; acesso a botão de energia, arquivos, galeria; instalável em celular | Build/toolchain mais pesados; teste em emulador |
-| **B. PWA/Web (JS/TS)** — protótipo no navegador | Demonstra tudo rápido; roda em qualquer lugar; fácil de iterar | Não vira um "OS" real; sem botão de energia/arquivos nativos |
 
 
 ## Linguagens
