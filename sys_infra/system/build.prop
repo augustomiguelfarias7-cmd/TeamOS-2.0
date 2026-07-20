@@ -1,0 +1,28 @@
+# Propriedades de Sistema do Android e do TeamOS
+ro.build.version.release=15
+ro.build.version.sdk=35
+ro.product.brand=TeamOS
+ro.product.name=TeamOS_Phone
+ro.product.device=teamos_arm64
+ro.product.board=teamos
+ro.product.manufacturer=TeamOS_Corp
+ro.system.build.fingerprint=TeamOS/teamos_arm64/teamos:15/V2.0/20261015:user/release-keys
+ro.config.notification_sound=OnTheHunt.ogg
+ro.config.alarm_alert=Oxygen.ogg
+ro.setupwizard.mode=OPTIONAL
+
+# Configurações de Memória e Máquina Virtual Java do Android (ART)
+dalvik.vm.image-dex2oat-filter=speed
+dalvik.vm.dex2oat-filter=speed
+dalvik.vm.heapstartsize=8m
+dalvik.vm.heapgrowthlimit=192m
+dalvik.vm.heapsize=512m
+dalvik.vm.heaptargetutilization=0.75
+dalvik.vm.heapminfree=512k
+dalvik.vm.heapmaxfree=8m
+
+# Propriedades personalizadas do TeamOS
+ro.teamos.assistant.default=ChatGPT
+ro.teamos.search.default=Google
+ro.teamos.web_app_store.enabled=true
+ro.teamos.i18n.locales=pt-BR,pt-PT,en-US,en-GB,ko-KR,ja-JP,hi-IN

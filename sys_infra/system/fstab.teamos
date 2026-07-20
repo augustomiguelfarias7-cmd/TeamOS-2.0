@@ -1,0 +1,8 @@
+# TeamOS fstab Configuration
+# <src>                                      <mnt_point>  <type>  <mnt_flags and options>                     <fs_mgr_flags>
+/dev/block/by-name/boot                      /boot        emmc    defaults                                    defaults
+/dev/block/by-name/system                    /system      ext4    ro,barrier=1                                wait,slotselect,logical,first_stage_mount
+/dev/block/by-name/vendor                    /vendor      ext4    ro,barrier=1                                wait,slotselect,logical,first_stage_mount
+/dev/block/by-name/product                   /product     ext4    ro,barrier=1                                wait,slotselect,logical,first_stage_mount
+/dev/block/by-name/userdata                  /data        f2fs    noatime,nosuid,nodev,discard                wait,check,fileencryption=aes-256-xts
+/dev/block/by-name/cache                     /cache       ext4    noatime,nosuid,nodev                        wait,check
