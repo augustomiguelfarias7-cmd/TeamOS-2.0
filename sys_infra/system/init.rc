@@ -1,0 +1,79 @@
+# TeamOS 2.0 - Android/Linux System Init Configuration
+# Este arquivo descreve a inicialização de serviços essenciais na partição system.
+
+import /vendor/etc/init/hw/init.teamos.hardware.rc
+
+on early-init
+    # Inicia o log daemon e define limites de arquivo fundamentais
+    start ueventd
+    mkdir /mnt/vendor 0771 system system
+
+on init
+    # Configura variáveis de ambiente globais do Android/TeamOS
+    export ANDROID_ROOT /system
+    export ANDROID_DATA /data
+    export ANDROID_STORAGE /storage
+    export EXTERNAL_STORAGE /sdcard
+    export TEAMOS_VERSION 2.0.0
+    export TEAMOS_CODENAME "Hustle"
+
+    # Cria pontos de montagem para as partições
+    mkdir /system 0755 root root
+    mkdir /vendor 0755 root root
+    mkdir /product 0755 root root
+    mkdir /data 0771 system system
+    mkdir /cache 0770 system cache
+    mkdir /config 0500 root root
+
+on fs
+    # Ponto de montagem fstab e verificação
+    mount_all /system/etc/fstab.teamos
+
+on post-fs
+    # Uma vez que as partições fs estão montadas, define permissões do sistema
+    chown system system /data
+    chmod 0771 /data
+
+on boot
+    # Inicializa a pilha de rede e configurações de kernel básicas
+    write /proc/sys/kernel/panic_on_oops 1
+    write /proc/sys/kernel/printk "4 4 1 7"
+
+    # Inicia subsistema gráfico básico e gerenciador de serviços
+    class_start core
+    class_start main
+
+# --- Serviços de Core e HALs do Sistema ---
+
+service ueventd /system/bin/ueventd
+    class core
+    critical
+    seclabel u:r:ueventd:s0
+
+service servicemanager /system/bin/servicemanager
+    class core
+    user system
+    group system readproc
+    critical
+    onrestart restart surfaceflinger
+    onrestart restart vold
+
+service surfaceflinger /system/bin/surfaceflinger
+    class core
+    user system
+    group graphics drmrpc readproc
+    onrestart restart teamos_launcher
+
+service vold /system/bin/vold
+    class core
+    ioprio be 2
+
+# --- Serviços Específicos do TeamOS ---
+
+service teamos_launcher /system/bin/app_process -Djava.class.path=/product/app/TeamOSLauncher/TeamOSLauncher.apk /system/bin com.teamos.launcher.MainActivity
+    class main
+    user system
+    group system graphics input dbus
+    oneshot
+    disabled
+    onrestart echo "Launcher TeamOS reiniciando..."
