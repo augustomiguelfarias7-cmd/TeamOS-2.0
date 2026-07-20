@@ -1,4 +1,4 @@
-   #TeamOS 2.0
+   # TeamOS 2.0
 
 **TeamOS** é um sistema operacional mobile focado em **web apps** — pense num "Chrome OS para celular". Em vez de instalar aplicativos nativos pesados, a **Loja de Apps** instala *exibidores* leves (WebView) que abrem a interface web de cada serviço numa janela dedicada e sem barra de navegação.
 
