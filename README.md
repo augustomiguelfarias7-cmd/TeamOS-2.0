@@ -1,4 +1,4 @@
- https://github.com/augustomiguelfarias7-cmd/TeamOS-2.0/blob/78385ba278acecceda078e7508a567d64fe611be/1784519983180.png  # TeamOS 2.0
+![Imagem do TeamOS](https://raw.githubusercontent.com/augustomiguelfarias7-cmd/TeamOS-2.0/78385ba278acecceda078e7508a567d64fe611be/1784519983180.png) # TeamOS 2.0
 
 **TeamOS** é um sistema operacional mobile focado em **web apps** — pense num "Chrome OS para celular". Em vez de instalar aplicativos nativos pesados, a **Loja de Apps** instala *exibidores* leves (WebView) que abrem a interface web de cada serviço numa janela dedicada e sem barra de navegação.
 
