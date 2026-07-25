@@ -1,4 +1,4 @@
-9# TeamOS 2.0 — Arquitetura & Roadmap
+# TeamOS 2.0 — Arquitetura & Roadmap
 
 Este documento descreve a arquitetura pretendida e o plano por fases. Um "OS completo" (kernel + init + drivers) não é construído do zero — o TeamOS é uma **camada de experiência** (shell/launcher + runtime de apps WebView) que roda **sobre um núcleo Linux/Android existente**. Isso é como Chrome OS e Android funcionam na prática.
 
