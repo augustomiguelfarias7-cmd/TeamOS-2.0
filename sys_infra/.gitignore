@@ -1,3 +1,0 @@
-# Ignore build artifacts generated in the output directory
-sys_infra/out/
-sys_infra/temp_build/
